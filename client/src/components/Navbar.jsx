@@ -47,7 +47,6 @@ export default function Navbar() {
       }}
     >
       <div className="container h-full flex items-center justify-between">
-        {/* Logo */}
         <div
           className="flex items-center gap-2 cursor-pointer z-51 select-none"
           onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsOpen(false) }}
@@ -58,7 +57,6 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <button
@@ -71,12 +69,10 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
         <a href="#contact" className="hidden md:inline-flex btn-primary" style={{ padding: '8px 20px', fontSize: '0.75rem' }}>
           Let's Talk
         </a>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 z-51"
@@ -86,7 +82,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu — fullscreen overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -101,7 +96,6 @@ export default function Navbar() {
               WebkitBackdropFilter: 'blur(24px)',
             }}
           >
-            {/* Close button top-right */}
             <motion.button
               initial={{ opacity: 0, rotate: -90 }}
               animate={{ opacity: 1, rotate: 0 }}
@@ -127,7 +121,6 @@ export default function Navbar() {
               <X size={20} />
             </motion.button>
 
-            {/* Centered nav links */}
             <nav style={{
               display: 'flex',
               flexDirection: 'column',
@@ -179,7 +172,6 @@ export default function Navbar() {
                 </motion.button>
               ))}
 
-              {/* CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

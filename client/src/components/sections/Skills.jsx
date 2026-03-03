@@ -9,7 +9,6 @@ import {
   SiBootstrap, SiGit, SiTensorflow, SiPytorch,
 } from 'react-icons/si'
 
-/* Map skill names → official brand icons */
 const skillIcons = {
   'C/C++': SiCplusplus,
   'Python': SiPython,
@@ -31,7 +30,6 @@ const skillIcons = {
   'Deep Learning': SiPytorch,
 }
 
-/* Brand colors for each skill */
 const skillColors = {
   'C/C++': '#00599C',
   'Python': '#3776AB',
@@ -53,7 +51,6 @@ const skillColors = {
   'Deep Learning': '#EE4C2C',
 }
 
-/* Marquee row component — infinite horizontal scroll */
 function MarqueeRow({ items, direction = 'left' }) {
   const doubled = [...items, ...items]
   return (
@@ -91,7 +88,6 @@ export default function Skills() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* Row 1 — slide in from left with 3D tilt */
       if (row1Ref.current) {
         gsap.fromTo(row1Ref.current,
           { opacity: 0, x: -60, rotateY: 6 },
@@ -102,7 +98,6 @@ export default function Skills() {
           }
         )
       }
-      /* Row 2 — slide in from right with 3D tilt */
       if (row2Ref.current) {
         gsap.fromTo(row2Ref.current,
           { opacity: 0, x: 60, rotateY: -6 },
@@ -120,7 +115,6 @@ export default function Skills() {
   return (
     <section id="skills" ref={sectionRef} className="section" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +130,6 @@ export default function Skills() {
         </motion.div>
       </div>
 
-      {/* Full-width marquee rows — scroll-triggered with 3D perspective */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', perspective: '1000px' }}>
         <div ref={row1Ref} style={{ opacity: 0 }}>
           <MarqueeRow items={skillsRow1} direction="left" />

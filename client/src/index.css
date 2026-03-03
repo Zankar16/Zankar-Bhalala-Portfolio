@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* -------------------------------------------------------------------------------
-   PORTFOLIO DESIGN SYSTEM � Clean, dark, professional
-   Inspired by abdulbasit-005.vercel.app
-   ------------------------------------------------------------------------------- */
-
 :root {
   --primary: #EDEDED;
   --accent: #A78BFA;
@@ -47,7 +42,6 @@
   --duration: 300ms;
 }
 
-/* --- Reset -------------------------------------------------------------------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
@@ -83,7 +77,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
 
-/* --- Layout ------------------------------------------------------------------- */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -99,7 +92,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   padding: 100px 0;
 }
 
-/* --- Section Badge ------------------------------------------------------------ */
 .section-badge {
   display: inline-flex;
   align-items: center;
@@ -117,7 +109,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   margin-bottom: 1.5rem;
 }
 
-/* --- Buttons ------------------------------------------------------------------ */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -168,7 +159,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   transform: translateY(-2px) scale(1.03);
 }
 
-/* --- Card --------------------------------------------------------------------- */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -202,7 +192,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
 
 .card:hover::before { opacity: 1; }
 
-/* --- Social Link -------------------------------------------------------------- */
 .social-link {
   display: flex;
   align-items: center;
@@ -223,7 +212,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   transform: translateY(-3px) scale(1.05);
 }
 
-/* --- Nav link ----------------------------------------------------------------- */
 .nav-link {
   font-size: 0.8125rem;
   font-weight: 500;
@@ -239,7 +227,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
 .nav-link:hover { color: var(--text); }
 .nav-link.active { color: var(--accent); background: var(--accent-subtle); }
 
-/* --- Skill pill --------------------------------------------------------------- */
 .skill-pill {
   display: inline-flex;
   align-items: center;
@@ -254,7 +241,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   transition: all var(--duration) var(--ease);
 }
 
-/* --- Code block --------------------------------------------------------------- */
 .code-block {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -269,7 +255,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   transform: translateY(-6px) scale(1.02);
 }
 
-/* --- Marquee for Skills ------------------------------------------------------- */
 .marquee-container {
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
@@ -330,7 +315,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   letter-spacing: 0.05em;
 }
 
-/* --- Project card ------------------------------------------------------------- */
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -356,7 +340,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   overflow: hidden;
 }
 
-/* --- Input -------------------------------------------------------------------- */
 .input-field {
   width: 100%;
   padding: 14px 16px;
@@ -376,7 +359,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   box-shadow: 0 0 0 3px var(--accent-subtle);
 }
 
-/* --- Timeline ----------------------------------------------------------------- */
 .timeline-dot {
   width: 14px;
   height: 14px;
@@ -387,7 +369,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   z-index: 2;
 }
 
-/* --- Status dot --------------------------------------------------------------- */
 .status-dot {
   width: 8px;
   height: 8px;
@@ -402,7 +383,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   50% { opacity: 0.3; }
 }
 
-/* --- Animations --------------------------------------------------------------- */
 @keyframes blink-cursor {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
@@ -431,15 +411,12 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   background-size: 60px 60px;
 }
 
-/* --- Utility ------------------------------------------------------------------ */
 .z-51 { z-index: 51; }
 .z-48 { z-index: 48; }
 .z-49 { z-index: 49; }
 
-/* --- 3D Perspective Utilities ------------------------------------------------- */
 .perspective-800 { perspective: 800px; }
 
-/* --- Footer Grid -------------------------------------------------------------- */
 .footer-grid {
   grid-template-columns: 1.5fr 1fr 1fr;
 }
@@ -453,13 +430,11 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
 .perspective-1200 { perspective: 1200px; }
 .preserve-3d { transform-style: preserve-3d; }
 
-/* 3D card entrance � used with GSAP for rotateX reveal */
 .reveal-3d {
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
 
-/* 3D float effect on hover � subtle depth */
 .float-3d {
   transition: transform 550ms cubic-bezier(0.19, 1, 0.22, 1), box-shadow 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -468,7 +443,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(167, 139, 250, 0.08);
 }
 
-/* 3D shadow � simulates depth with layered shadows */
 .shadow-3d {
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.2),
@@ -476,7 +450,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
     0 16px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Responsive: Tablet ≤ 768px ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section { padding: 64px 0; }
 
@@ -537,7 +510,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   }
 }
 
-/* ── Responsive: Small mobile ≤ 480px ────────────────────────────────────────── */
 @media (max-width: 480px) {
   .section { padding: 48px 0; }
 
@@ -573,7 +545,6 @@ p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
   }
 }
 
-/* ── Disable hover transforms on touch devices ───────────────────────────────── */
 @media (hover: none) and (pointer: coarse) {
   .card:hover {
     transform: none;

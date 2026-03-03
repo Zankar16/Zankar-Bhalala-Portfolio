@@ -16,7 +16,6 @@ const codeLines = [
   { num: '08', code: 'developer.showcase();' },
 ]
 
-/* Stagger variants for word-by-word headline reveal */
 const headlineContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
@@ -35,7 +34,6 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* Code block container fade-in with 3D rotation */
       if (codeRef.current) {
         gsap.fromTo(codeRef.current,
           { opacity: 0, y: 30, rotateX: 12 },
@@ -43,7 +41,6 @@ export default function Hero() {
         )
       }
 
-      /* Typewriter-style sequential line reveal */
       lineRefs.current.forEach((line, i) => {
         if (!line) return
         gsap.fromTo(line,
@@ -52,7 +49,6 @@ export default function Hero() {
         )
       })
 
-      /* Parallax float on background orbs */
       if (orb1Ref.current) {
         gsap.to(orb1Ref.current, {
           y: -60, x: 20,
@@ -76,7 +72,6 @@ export default function Hero() {
       className="section relative min-h-screen flex items-center grid-bg overflow-hidden"
       style={{ paddingTop: 'clamp(80px, 15vw, 120px)', paddingBottom: 'clamp(48px, 8vw, 80px)' }}
     >
-      {/* Background orbs — now with parallax */}
       <div ref={orb1Ref} className="absolute top-1/4 -left-32 w-96 h-96 rounded-full pointer-events-none blur-3xl glow-orb"
            style={{ background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)' }} />
       <div ref={orb2Ref} className="absolute bottom-1/3 -right-32 w-80 h-80 rounded-full pointer-events-none blur-3xl glow-orb"
@@ -85,7 +80,6 @@ export default function Hero() {
       <div className="container relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Left Content */}
           <div className="order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -98,7 +92,6 @@ export default function Hero() {
               </p>
             </motion.div>
 
-            {/* Staggered word-by-word headline */}
             <motion.h1
               variants={headlineContainer}
               initial="hidden"
@@ -114,7 +107,6 @@ export default function Hero() {
               <motion.span variants={wordReveal} style={{ display: 'inline-block', color: 'var(--primary)' }}>Masterpieces</motion.span>
             </motion.h1>
 
-            {/* Intro text */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -127,7 +119,6 @@ export default function Hero() {
               and intelligent ML solutions.
             </motion.p>
 
-            {/* Social Links — staggered */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -153,7 +144,6 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -171,7 +161,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Code Block — 3D tilt on hover */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -180,7 +169,6 @@ export default function Hero() {
           >
             <Tilt3D maxRotation={10} perspective={900} scale={1.02} glare={true}>
               <div ref={codeRef} className="code-block w-full max-w-lg mx-auto lg:ml-auto" style={{ opacity: 0 }}>
-              {/* Header bar */}
               <div className="flex items-center gap-2 px-4 py-3" style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg-elevated)' }}>
                 <div className="w-3 h-3 rounded-full" style={{ background: '#EF4444' }} />
                 <div className="w-3 h-3 rounded-full" style={{ background: '#F59E0B' }} />
@@ -189,15 +177,12 @@ export default function Hero() {
                   Portfolio.ts
                 </span>
               </div>
-              {/* Code body */}
               <div style={{ display: 'flex', fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.7rem, 1.8vw, 0.8125rem)' }}>
-                {/* Line numbers column */}
                 <div style={{ padding: '1.25rem 0.75rem 1.25rem 1rem', borderRight: '1px solid var(--border)', display: 'flex', flexDirection: 'column', gap: '0.35rem', userSelect: 'none', textAlign: 'right', minWidth: '2.5rem' }}>
                   {codeLines.map((line, i) => (
                     <span key={i} ref={el => lineRefs.current[i] = el} style={{ color: 'var(--text-muted)', fontSize: '0.75rem', lineHeight: '1.6', opacity: 0 }}>{line.num}</span>
                   ))}
                 </div>
-                {/* Code column */}
                 <div style={{ padding: '1.25rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.35rem', flex: 1 }}>
                   {codeLines.map((line, i) => (
                     <motion.div
@@ -225,7 +210,6 @@ export default function Hero() {
               </div>
             </Tilt3D>
 
-            {/* Stats row below code block */}
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'clamp(1.25rem, 4vw, 3rem)', marginTop: 'clamp(1.5rem, 3vw, 2.5rem)', paddingTop: 'clamp(1.25rem, 2.5vw, 2rem)', borderTop: '1px solid var(--border)' }}>
               {personal.stats.map((stat, i) => (
                 <motion.div

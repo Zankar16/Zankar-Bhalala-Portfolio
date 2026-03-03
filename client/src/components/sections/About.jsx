@@ -25,7 +25,6 @@ const certifications = [
   'Problem Solving & SQL — HackerRank',
 ]
 
-/* Stagger container variant */
 const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
@@ -44,7 +43,6 @@ export default function About() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* Bio text fade-in */
       if (bioRef.current) {
         gsap.fromTo(bioRef.current,
           { opacity: 0, y: 30 },
@@ -55,7 +53,6 @@ export default function About() {
         )
       }
 
-      /* Staggered highlight cards — 3D rotateX entrance */
       highlightRefs.current.forEach((card, i) => {
         if (!card) return
         gsap.fromTo(card,
@@ -68,7 +65,6 @@ export default function About() {
         )
       })
 
-      /* Staggered responsibility pills */
       pillRefs.current.forEach((pill, i) => {
         if (!pill) return
         gsap.fromTo(pill,
@@ -81,7 +77,6 @@ export default function About() {
         )
       })
 
-      /* Staggered certification items */
       certRefs.current.forEach((cert, i) => {
         if (!cert) return
         gsap.fromTo(cert,
@@ -100,7 +95,6 @@ export default function About() {
   return (
     <section id="about" ref={sectionRef} className="section" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

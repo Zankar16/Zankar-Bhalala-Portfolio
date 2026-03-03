@@ -20,7 +20,6 @@ export default function Experience() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* Timeline line drawing animation */
       if (timelineLineRef.current) {
         gsap.fromTo(timelineLineRef.current,
           { scaleY: 0, transformOrigin: 'top center' },
@@ -33,7 +32,6 @@ export default function Experience() {
         )
       }
 
-      /* Timeline dots — scale in with stagger */
       dotRefs.current.forEach((dot, i) => {
         if (!dot) return
         gsap.fromTo(dot,
@@ -48,7 +46,6 @@ export default function Experience() {
         )
       })
 
-      /* Card reveals — 3D rotateX entrance with staggered scale */
       cardRefs.current.forEach((card, i) => {
         if (!card) return
         gsap.fromTo(card,
@@ -69,7 +66,6 @@ export default function Experience() {
   return (
     <section id="experience" ref={sectionRef} className="section" style={{ background: 'var(--bg)' }}>
       <div className="container">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,28 +80,23 @@ export default function Experience() {
           </h2>
         </motion.div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line — animated draw-down */}
           <div ref={timelineLineRef} className="absolute left-6 top-0 bottom-0 w-px hidden lg:block"
                style={{ background: 'linear-gradient(180deg, var(--accent), var(--accent-purple), transparent)', transformOrigin: 'top center' }} />
 
           <div className="space-y-6">
             {experience.map((exp, i) => (
               <div key={i} className="relative lg:pl-16">
-                {/* Timeline dot — animated scale-in */}
                 <div className="absolute left-[18px] top-8 hidden lg:block" ref={el => dotRefs.current[i] = el} style={{ opacity: 0 }}>
                   <div className="timeline-dot" />
                 </div>
 
-                {/* Card */}
                 <div
                   ref={el => cardRefs.current[i] = el}
                   onMouseMove={(e) => handleCardMouse(e, i)}
                   className="card group"
                   style={{ opacity: 0 }}
                 >
-                  {/* Top row */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
                     <div>
                       <h3 className="text-lg font-bold transition-colors duration-300 group-hover:text-purple-400" style={{ color: 'var(--text)' }}>
@@ -125,7 +116,6 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  {/* Bullets */}
                   <ul className="space-y-3">
                     {exp.bullets.map((b, j) => (
                       <li key={j} className="flex items-start gap-3 text-sm leading-relaxed"

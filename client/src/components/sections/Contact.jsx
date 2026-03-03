@@ -13,7 +13,6 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null)
 
-  /* Mouse-follow glow — same pattern as Experience/Projects cards */
   const handleCardMouse = useCallback((e, i) => {
     const card = cardRefs.current[i]
     if (!card) return
@@ -66,7 +65,6 @@ export default function Contact() {
   return (
     <section id="contact" ref={sectionRef} className="section" style={{ background: 'var(--bg-alt)' }}>
       <div className="container">
-        {/* ── Section Header — matches About / Experience / Projects pattern ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,14 +79,12 @@ export default function Contact() {
           </h2>
         </motion.div>
 
-        {/* ── Two-column grid ────────────────────────────────────────────── */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))',
           gap: '1.5rem',
           alignItems: 'start',
         }}>
-          {/* ── LEFT: Form Card — uses .card class like Experience ─────── */}
           <Tilt3D maxRotation={5} perspective={900} scale={1.01} glare={true}>
           <div
             ref={el => cardRefs.current[0] = el}
@@ -171,7 +167,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* CTA — uses .btn-primary class, same as Hero/Projects */}
               <button
                 type="submit"
                 className="btn-primary"
@@ -197,7 +192,6 @@ export default function Contact() {
           </div>
           </Tilt3D>
 
-          {/* ── RIGHT: Info Card — single .card, same style ──────────── */}
           <Tilt3D maxRotation={5} perspective={900} scale={1.01} glare={true}>
           <div
             ref={el => cardRefs.current[1] = el}
@@ -205,7 +199,6 @@ export default function Contact() {
             className="card"
             style={{ padding: 'clamp(1.25rem, 3vw, 2rem)', display: 'flex', flexDirection: 'column', opacity: 0 }}
           >
-            {/* Direct Contact */}
             <h3 style={{ marginBottom: '0.25rem' }}>Direct Contact</h3>
             <p className="text-sm" style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
               Reach out directly — I'm always open to conversations.
@@ -266,14 +259,12 @@ export default function Contact() {
               })}
             </div>
 
-            {/* Divider — simple, like borders used elsewhere */}
             <div style={{
               height: '1px',
               background: 'var(--border)',
               marginBottom: '2rem',
             }} />
 
-            {/* Social — uses .social-link style icons + labels */}
             <h4 style={{
               fontSize: '0.75rem',
               fontWeight: 600,

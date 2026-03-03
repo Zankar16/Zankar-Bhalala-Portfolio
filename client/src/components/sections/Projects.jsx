@@ -9,7 +9,6 @@ export default function Projects() {
   const sectionRef = useRef(null)
   const cardRefs = useRef([])
 
-  /* Mouse-follow glow — same as Experience/Contact */
   const handleCardMouse = useCallback((e, i) => {
     const card = cardRefs.current[i]
     if (!card) return
@@ -40,7 +39,6 @@ export default function Projects() {
   return (
     <section id="projects" ref={sectionRef} className="section" style={{ background: 'var(--bg)' }}>
       <div className="container">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +57,6 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Project cards — compact grid */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
@@ -73,16 +70,13 @@ export default function Projects() {
               className="card group"
               style={{ padding: 0, overflow: 'hidden', opacity: 0 }}
             >
-              {/* Compact color bar top */}
               <div style={{
                 height: '4px',
                 background: project.color || 'var(--accent)',
                 opacity: 0.6,
               }} />
 
-              {/* Content */}
               <div style={{ padding: '1.5rem' }}>
-                {/* Icon + Title row */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
                   <div style={{
                     width: '36px',
@@ -104,7 +98,6 @@ export default function Projects() {
                   }}>{project.title}</h3>
                 </div>
 
-                {/* Description */}
                 <p style={{
                   fontSize: '0.8125rem',
                   color: 'var(--text-secondary)',
@@ -118,7 +111,6 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                {/* Tags */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem', marginBottom: '1.25rem' }}>
                   {project.tags.slice(0, 4).map((tag, j) => (
                     <span key={j} className="skill-pill">{tag}</span>
@@ -130,7 +122,6 @@ export default function Projects() {
                   )}
                 </div>
 
-                {/* Links */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
                   {project.live && project.live !== '' && project.live !== '#' && (
                     <a href={project.live} target="_blank" rel="noreferrer" className="btn-primary"
@@ -153,7 +144,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* View More */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

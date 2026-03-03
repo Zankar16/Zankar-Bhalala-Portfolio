@@ -1,19 +1,5 @@
 import { useRef, useCallback, useState, useEffect } from 'react'
 
-/**
- * Tilt3D — wraps any child with an interactive 3D perspective tilt effect.
- * Automatically disabled on touch/mobile devices.
- *
- * Props:
- *   maxRotation  — max degrees of tilt (default 12)
- *   perspective  — CSS perspective value in px (default 800)
- *   scale        — scale on hover (default 1.03)
- *   speed        — transition speed in ms (default 500)
- *   glare        — show light glare overlay (default true)
- *   className    — forwarded to outer wrapper
- *   style        — forwarded to outer wrapper
- *   children     — inner content
- */
 export default function Tilt3D({
   children,
   maxRotation = 12,
@@ -42,14 +28,13 @@ export default function Tilt3D({
   const handleMove = useCallback((e) => {
     const el = ref.current
     if (!el) return
-    // Cancel any pending frame to debounce
     if (raf.current) cancelAnimationFrame(raf.current)
     raf.current = requestAnimationFrame(() => {
       const rect = el.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width   // 0..1
-      const y = (e.clientY - rect.top) / rect.height    // 0..1
-      const rotateY = (x - 0.5) * maxRotation * 2       // -max..+max
-      const rotateX = (0.5 - y) * maxRotation * 2       // -max..+max (inverted for natural feel)
+      const x = (e.clientX - rect.left) / rect.width
+      const y = (e.clientY - rect.top) / rect.height
+      const rotateY = (x - 0.5) * maxRotation * 2
+      const rotateX = (0.5 - y) * maxRotation * 2
       setTilt({ rotateX, rotateY, glareX: x * 100, glareY: y * 100 })
     })
   }, [maxRotation])
@@ -91,7 +76,6 @@ export default function Tilt3D({
       >
         {children}
 
-        {/* Glare overlay */}
         {glare && !isTouchDevice && (
           <div
             aria-hidden="true"
