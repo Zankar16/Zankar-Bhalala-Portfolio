@@ -4,10 +4,12 @@ import { gsap } from '../../gsap-setup'
 import { Mail, Phone, MapPin, Send, ArrowUpRight } from 'lucide-react'
 import { personal, socialLinks } from '../../data'
 import Tilt3D from '../Tilt3D'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const sectionRef = useRef(null)
   const cardRefs = useRef([])
+  const formRef = useRef(null)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null)
 
@@ -41,17 +43,18 @@ export default function Contact() {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('http://localhost:3001/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
-      })
-      if (res.ok) {
-        setStatus('sent')
-        setForm({ name: '', email: '', message: '' })
-        setTimeout(() => setStatus(null), 3500)
-      } else setStatus('error')
-    } catch { setStatus('error') }
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      setStatus('sent')
+      setForm({ name: '', email: '', message: '' })
+      setTimeout(() => setStatus(null), 3500)
+    } catch {
+      setStatus('error')
+    }
   }
 
   const contactItems = [
@@ -98,7 +101,7 @@ export default function Contact() {
               Fill in the form below and I'll get back to you shortly.
             </p>
 
-            <form onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit}>
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
@@ -117,6 +120,7 @@ export default function Contact() {
                   }}>Name</label>
                   <input
                     type="text"
+                    name="from_name"
                     className="input-field"
                     placeholder="Your name"
                     value={form.name}
@@ -136,6 +140,7 @@ export default function Contact() {
                   }}>Email</label>
                   <input
                     type="email"
+                    name="from_email"
                     className="input-field"
                     placeholder="your@email.com"
                     value={form.email}
@@ -156,6 +161,7 @@ export default function Contact() {
                   marginBottom: '0.5rem',
                 }}>Message</label>
                 <textarea
+                  name="message"
                   className="input-field"
                   style={{ minHeight: '140px', resize: 'vertical' }}
                   placeholder="Tell me about your project or idea..."
