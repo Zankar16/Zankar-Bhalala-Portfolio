@@ -120,7 +120,7 @@ export default function Contact() {
                   }}>Name</label>
                   <input
                     type="text"
-                    name="from_name"
+                    name="name"
                     className="input-field"
                     placeholder="Your name"
                     value={form.name}
@@ -140,7 +140,7 @@ export default function Contact() {
                   }}>Email</label>
                   <input
                     type="email"
-                    name="from_email"
+                    name="email"
                     className="input-field"
                     placeholder="your@email.com"
                     value={form.email}
