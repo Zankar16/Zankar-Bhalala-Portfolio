@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zankarbhalala.dev/sitemap.xml
